@@ -9,7 +9,7 @@
 var buildMap = {};
 
 // Alias the correct `nodeRequire` method.
-var nodeRequire = requirejs.nodeRequire;
+var nodeRequire = typeof requirejs === "object" && requirejs.nodeRequire;
 
 // If in Node, get access to the filesystem.
 if (nodeRequire) {
@@ -34,9 +34,9 @@ define(function(require, exports) {
     var originalName = name;
 
     // Default settings point to the project root and using html files.
-    var settings = _.defaults(config._loader, {
+    var settings = _.extend({}, config.lodashLoader, {
       ext: ".html",
-      root: "/",
+      root: config.baseUrl,
       templateSettings: {}
     });
 
