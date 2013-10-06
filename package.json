@@ -13,5 +13,8 @@
     "grunt-clear": "~0.2.1",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-qunit": "~0.3.0"
+  },
+  "scripts": {
+    "postinstall": "bower i -s"
   }
 }

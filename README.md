@@ -115,6 +115,24 @@ map: {
 }
 ```
 
+### Running tests ###
+
+You will need Node.js and Grunt installed to run tests.
+
+Clone this project, open the directory in a terminal, and execute the following
+commands:
+
+``` bash
+# Install dependencies.
+npm i -q
+
+# Run the tests.
+grunt
+```
+
+You can also run an http-server in the root and hit the tests directly.  Since
+XHR is used, tests must be run from a server.
+
 ### Release notes: ###
 
 * Open sourced on GitHub.
