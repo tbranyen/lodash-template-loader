@@ -41,7 +41,7 @@ define("ldsh", function(require, exports) {
     }, config.lodashLoader);
 
     // Set the custom passed in template settings.
-    _.templateSettings = settings.templateSettings;
+    _.extend(_.templateSettings, settings.templateSettings);
 
     // Builds must happen with Node.
     if (config.isBuild) {
