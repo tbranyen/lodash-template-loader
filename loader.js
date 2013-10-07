@@ -34,11 +34,11 @@ define("ldsh", function(require, exports) {
     var originalName = name;
 
     // Default settings point to the project root and using html files.
-    var settings = _.extend({}, config.lodashLoader, {
+    var settings = _.extend({}, {
       ext: ".html",
       root: config.baseUrl,
       templateSettings: {}
-    });
+    }, config.lodashLoader);
 
     // Set the custom passed in template settings.
     _.templateSettings = settings.templateSettings;
