@@ -1,6 +1,8 @@
 Lo-Dash AMD Template Loader
 ---------------------------
 
+[![Build Status](https://travis-ci.org/tbranyen/lodash-template-loader.png?branch=master)](https://travis-ci.org/tbranyen/lodash-template-loader)
+
 Created by Tim Branyen [@tbranyen](http://twitter.com/tbranyen)
 
 AMD and RequireJS are excellent module loaders, but through the flexibility of
