@@ -10,9 +10,9 @@ asyncTest("AMD support", 1, function() {
     baseUrl: "../",
 
     paths: {
-      lodash: "bower_components/lodash/dist/lodash",
-      ldsh: "loader",
-      fixtures: "test/fixtures"
+      "lodash": "bower_components/lodash/dist/lodash",
+      "ldsh": "loader",
+      "fixtures": "test/fixtures"
     }
   });
 

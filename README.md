@@ -105,14 +105,16 @@ Internally the plugin specifically looks for the identifier `lodash`.  In the
 configuration simply:
 
 ``` javascript
-// Define a new object literal, named map.
-map: {
-  // Ensure the mapping works globally across any modules using this plugin.
-  "*": {
-    // Map the lodash identifier to whatever module you want here.
-    "lodash": "underscore"
+require.config({
+  // Define a new object literal, named map.
+  map: {
+    // Ensure the mapping works globally across any modules using this plugin.
+    "*": {
+      // Map the lodash identifier to whatever module you want here.
+      "lodash": "underscore"
+    }
   }
-}
+});
 ```
 
 ### Running tests ###
@@ -134,5 +136,7 @@ You can also run an http-server in the root and hit the tests directly.  Since
 XHR is used, tests must be run from a server.
 
 ### Release notes: ###
+
+#### 0.1.0 ####
 
 * Open sourced on GitHub.

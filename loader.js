@@ -17,9 +17,10 @@ if (nodeRequire) {
 }
 
 // Define the plugin using the CommonJS syntax.
-define(function(require, exports) {
+define("ldsh", function(require, exports) {
   var _ = require("lodash");
 
+  exports.dynamic = true;
   exports.version = "0.1.0";
 
   // Invoked by the AMD builder, passed the path to resolve, the require

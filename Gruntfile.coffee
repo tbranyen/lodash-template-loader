@@ -1,7 +1,6 @@
 module.exports = ->
   @initConfig
 
-    clean: ["test/report", "test/tmp"]
     jshint: ["loader.js"]
 
     connect:
@@ -22,11 +21,10 @@ module.exports = ->
             "http://localhost:8000/test/curl.html"
           ]
 
-  @loadNpmTasks "grunt-contrib-clean"
   @loadNpmTasks "grunt-contrib-jshint"
   @loadNpmTasks "grunt-contrib-watch"
   @loadNpmTasks "grunt-contrib-connect"
   @loadNpmTasks "grunt-contrib-qunit"
   @loadNpmTasks "grunt-clear"
 
-  @registerTask "default", ["clean", "jshint", "connect", "qunit"]
+  @registerTask "default", ["jshint", "connect", "qunit"]
