@@ -15,6 +15,7 @@
     "grunt-contrib-qunit": "~0.3.0"
   },
   "scripts": {
+    "test": "grunt",
     "postinstall": "bower i -s"
   }
 }
