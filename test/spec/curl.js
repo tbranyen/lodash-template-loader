@@ -3,24 +3,32 @@
  * Ensures that the loader loads and functions in Curl.
  *
  */
+ /*global QUnit asyncTest curl ok start */
 QUnit.module("curl");
 
+curl.config({
+  baseUrl: "",
+
+  paths: {
+    "lodash": "../bower_components/lodash/dist/lodash",
+    "ldsh": "../loader",
+    "fixtures": "../test/fixtures"
+  }
+});
+
 asyncTest("AMD support", 1, function() {
-  curl.config({
-    baseUrl: "../",
 
-    paths: {
-      "lodash": "bower_components/lodash/dist/lodash",
-      "ldsh": "loader",
-      "fixtures": "test/fixtures"
+  curl(["ldsh!fixtures/template"]).then(
+    function(template) {
+      ok(template(), "It works!");
+
+      start();
+    },
+    function (ex) {
+      ok(false, ex.message);
+      start();
     }
-  });
-
-  curl(["ldsh!fixtures/template"]).then(function(template) {
-    ok(template(), "It works!");
-
-    start();
-  });
+  );
 });
 
 asyncTest("change extension", function() {
@@ -32,7 +40,12 @@ asyncTest("change extension", function() {
     ok(template(), "It works!");
 
     start();
-  });
+    },
+    function (ex) {
+      ok(false, ex.message);
+      start();
+    }
+  );
 });
 
 asyncTest("templateSettings", function() {
@@ -46,5 +59,10 @@ asyncTest("templateSettings", function() {
     ok(template({ msg: "It works!" }), "It works!");
 
     start();
-  });
+    },
+    function (ex) {
+      ok(false, ex.message);
+      start();
+    }
+  );
 });
