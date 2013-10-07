@@ -119,6 +119,56 @@ require.config({
 });
 ```
 
+### Using with Dojo: ###
+
+Ensure Dojo's loader is in `async` mode:
+
+``` html
+<script data-dojo-config="async:1" src="dojo/dojo.js"></script>
+```
+
+Set up your configuration:
+
+``` javascript
+require({
+  paths: {
+    "ldsh": "path/to/loader"
+  }
+});
+```
+
+And Require in your template:
+
+``` javascript
+require(["ldsh!path/to/template"], function(template) {
+  var contents = template({
+    // Some data.
+  });
+});
+```
+
+### Using with Curl: ###
+
+Set up your configuration:
+
+``` javascript
+curl.config({
+  paths: {
+    "ldsh": "path/to/loader"
+  }
+});
+```
+
+And Curl in your template:
+
+``` javascript
+curl(["ldsh!path/to/template"], function(template) {
+  var contents = template({
+    // Some data.
+  });
+});
+```
+
 ### Running tests ###
 
 You will need Node.js and Grunt installed to run tests.
