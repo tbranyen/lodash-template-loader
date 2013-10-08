@@ -46,3 +46,11 @@ asyncTest("templateSettings", function() {
     start();
   });
 });
+
+asyncTest("relative paths", 1, function() {
+  require(["fixtures/nested/module"], function(exports) {
+    ok(exports.template(), "It works!");
+
+    start();
+  });
+});

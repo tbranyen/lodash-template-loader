@@ -23,7 +23,7 @@ asyncTest("AMD support", 1, function() {
   });
 });
 
-asyncTest("change extension", function() {
+asyncTest("change extension", 1, function() {
   require({
     lodashLoader: {
       ext: ".ext"
@@ -35,7 +35,7 @@ asyncTest("change extension", function() {
   });
 });
 
-asyncTest("templateSettings", function() {
+asyncTest("templateSettings", 1, function() {
   require({
     lodashLoader: {
       templateSettings: {
@@ -44,6 +44,14 @@ asyncTest("templateSettings", function() {
     }
   }, ["ldsh!fixtures/interpolate"], function(template) {
     ok(template({ msg: "It works!" }), "It works!");
+
+    start();
+  });
+});
+
+asyncTest("relative paths", 1, function() {
+  require(["fixtures/nested/module"], function(exports) {
+    ok(exports.template(), "It works!");
 
     start();
   });

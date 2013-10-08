@@ -68,3 +68,11 @@ asyncTest("templateSettings", function() {
     }
   );
 });
+
+asyncTest("relative paths", 1, function() {
+  curl(["fixtures/nested/module"], function(exports) {
+    ok(exports.template(), "It works!");
+
+    start();
+  });
+});
