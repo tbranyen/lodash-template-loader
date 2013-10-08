@@ -7,12 +7,12 @@
 QUnit.module("curl");
 
 curl.config({
-  baseUrl: "",
+  baseUrl: "../",
 
   paths: {
-    "lodash": "../bower_components/lodash/dist/lodash",
-    "ldsh": "../loader",
-    "fixtures": "../test/fixtures"
+    "lodash": "bower_components/lodash/dist/lodash",
+    "ldsh": "loader",
+    "fixtures": "test/fixtures"
   }
 });
 
@@ -24,7 +24,7 @@ asyncTest("AMD support", 1, function() {
 
       start();
     },
-    function (ex) {
+    function(ex) {
       ok(false, ex.message);
       start();
     }
@@ -36,12 +36,13 @@ asyncTest("change extension", function() {
     lodashLoader: {
       ext: ".ext"
     }
-  }, ["ldsh!fixtures/different"]).then(function(template) {
-    ok(template(), "It works!");
+  }, ["ldsh!fixtures/different"]).then(
+    function(template) {
+      ok(template(), "It works!");
 
-    start();
+      start();
     },
-    function (ex) {
+    function(ex) {
       ok(false, ex.message);
       start();
     }
@@ -55,12 +56,13 @@ asyncTest("templateSettings", function() {
         "interpolate": /{{([\s\S]+?)}}/g
       }
     }
-  }, ["ldsh!fixtures/interpolate"]).then(function(template) {
-    ok(template({ msg: "It works!" }), "It works!");
+  }, ["ldsh!fixtures/interpolate"]).then(
+    function(template) {
+      ok(template({ msg: "It works!" }), "It works!");
 
-    start();
+      start();
     },
-    function (ex) {
+    function(ex) {
       ok(false, ex.message);
       start();
     }
