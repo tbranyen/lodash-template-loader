@@ -9,12 +9,11 @@
 var buildMap = {};
 
 // Alias the correct `nodeRequire` method.
-var nodeRequire = typeof requirejs === "object" && requirejs.nodeRequire;
+var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 
 // If in Node, get access to the filesystem.
-var fs;
 if (nodeRequire) {
-  fs = nodeRequire("fs");
+  var fs = nodeRequire("fs");
 }
 
 // Define the plugin using the CommonJS syntax.
@@ -33,6 +32,9 @@ define(function(require, exports) {
 
     // Always keep a copy of the original name.
     var originalName = name;
+
+    // Augment the name with the baseUrl.
+    name = config.baseUrl + name;
 
     var settings = configure(config);
 
@@ -65,11 +67,6 @@ define(function(require, exports) {
         load(buildMap[name]);
       }
     };
-
-    // Ensure the root always end in a trailing slash.
-    if (settings.root[settings.root.length-1] !== "/") {
-      settings.root = settings.root + "/";
-    }
 
     // Initiate the fetch.
     xhr.open("GET", settings.root + name + settings.ext, true);
