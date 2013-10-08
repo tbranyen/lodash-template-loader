@@ -3,24 +3,32 @@
  * Ensures that the loader loads and functions in Curl.
  *
  */
+ /*global QUnit asyncTest curl ok start */
 QUnit.module("curl");
 
+curl.config({
+  baseUrl: "../",
+
+  paths: {
+    "lodash": "bower_components/lodash/dist/lodash",
+    "ldsh": "loader",
+    "fixtures": "test/fixtures"
+  }
+});
+
 asyncTest("AMD support", 1, function() {
-  curl.config({
-    baseUrl: "../",
 
-    paths: {
-      "lodash": "bower_components/lodash/dist/lodash",
-      "ldsh": "loader",
-      "fixtures": "test/fixtures"
+  curl(["ldsh!fixtures/template"]).then(
+    function(template) {
+      ok(template(), "It works!");
+
+      start();
+    },
+    function(ex) {
+      ok(false, ex.message);
+      start();
     }
-  });
-
-  curl(["ldsh!fixtures/template"]).then(function(template) {
-    ok(template(), "It works!");
-
-    start();
-  });
+  );
 });
 
 asyncTest("change extension", function() {
@@ -28,11 +36,17 @@ asyncTest("change extension", function() {
     lodashLoader: {
       ext: ".ext"
     }
-  }, ["ldsh!fixtures/different"]).then(function(template) {
-    ok(template(), "It works!");
+  }, ["ldsh!fixtures/different"]).then(
+    function(template) {
+      ok(template(), "It works!");
 
-    start();
-  });
+      start();
+    },
+    function(ex) {
+      ok(false, ex.message);
+      start();
+    }
+  );
 });
 
 asyncTest("templateSettings", function() {
@@ -42,9 +56,15 @@ asyncTest("templateSettings", function() {
         "interpolate": /{{([\s\S]+?)}}/g
       }
     }
-  }, ["ldsh!fixtures/interpolate"]).then(function(template) {
-    ok(template({ msg: "It works!" }), "It works!");
+  }, ["ldsh!fixtures/interpolate"]).then(
+    function(template) {
+      ok(template({ msg: "It works!" }), "It works!");
 
-    start();
-  });
+      start();
+    },
+    function(ex) {
+      ok(false, ex.message);
+      start();
+    }
+  );
 });

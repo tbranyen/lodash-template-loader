@@ -12,12 +12,13 @@ var buildMap = {};
 var nodeRequire = typeof requirejs === "object" && requirejs.nodeRequire;
 
 // If in Node, get access to the filesystem.
+var fs;
 if (nodeRequire) {
   fs = nodeRequire("fs");
 }
 
 // Define the plugin using the CommonJS syntax.
-define("ldsh", function(require, exports) {
+define(function(require, exports) {
   var _ = require("lodash");
 
   exports.version = "0.1.0";
@@ -33,15 +34,7 @@ define("ldsh", function(require, exports) {
     // Always keep a copy of the original name.
     var originalName = name;
 
-    // Default settings point to the project root and using html files.
-    var settings = _.extend({}, {
-      ext: ".html",
-      root: config.baseUrl,
-      templateSettings: {}
-    }, config.lodashLoader);
-
-    // Set the custom passed in template settings.
-    _.extend(_.templateSettings, settings.templateSettings);
+    var settings = configure(config);
 
     // Builds must happen with Node.
     if (config.isBuild) {
@@ -89,20 +82,50 @@ define("ldsh", function(require, exports) {
   exports.write = function(pluginName, moduleName, write) {
     var template = buildMap[moduleName].source;
 
-    // This will return the template.
+    // Write out the actual definition
+    write(strDefine(pluginName, moduleName, template));
+  };
+
+  // This is for curl.js/cram.js build-time support.
+  exports.compile = function(pluginName, moduleName, req, io, config) {
+    configure(config);
+
+    // Ask cram to fetch the template file (resId) and pass it to `write`.
+    io.read(moduleName, write, io.error);
+
+    function write(template) {
+      // Write-out define(id,function(){return{/* template */}});
+      io.write(strDefine(pluginName, moduleName, template));
+    }
+  };
+
+  function strDefine(pluginName, moduleName, template) {
     var retTemplate = [
       "function() {",
         "return ", template, ";",
       "}"
     ].join("");
 
-    // Write out the actual definition
-    write([
+    return [
       "define('", pluginName, "!", moduleName, "', ", "[], ",
         retTemplate,
       ");\n"
-    ].join(""));
-  };
+    ].join("");
+  }
+
+  function configure(config) {
+    // Default settings point to the project root and using html files.
+    var settings = _.extend({
+      ext: ".html",
+      root: config.baseUrl,
+      templateSettings: {}
+    }, config.lodashLoader);
+
+    // Set the custom passed in template settings.
+    _.extend(_.templateSettings, settings.templateSettings);
+
+    return settings;
+  }
 });
 
 })(typeof global === "object" ? global : this);
