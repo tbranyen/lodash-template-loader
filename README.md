@@ -190,6 +190,10 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.1 ####
+
+* Hotfix for building in r.js projects.
+
 #### 0.1.0 ####
 
 * Open sourced on GitHub.

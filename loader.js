@@ -1,4 +1,4 @@
-/* Lo-Dash Template Loader v0.1.0
+/* Lo-Dash Template Loader v0.1.1
  * Copyright 2013, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
@@ -20,7 +20,7 @@ if (nodeRequire) {
 define(function(require, exports) {
   var _ = require("lodash");
 
-  exports.version = "0.1.0";
+  exports.version = "0.1.1";
 
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.
@@ -41,11 +41,6 @@ define(function(require, exports) {
     // Builds must happen with Node.
     if (config.isBuild) {
       name = settings.root + name + settings.ext;
-
-      // Remove a leading forward slash during builds.
-      if (name[0] === "/") {
-        name = name.slice(1);
-      }
 
       // Read in the file synchronously, as RequireJS expects, and return the
       // contents.  Process as a Lo-Dash template.
@@ -96,16 +91,15 @@ define(function(require, exports) {
     }
   };
 
+  // Crafts the written definition form of the module during a build.
   function strDefine(pluginName, moduleName, template) {
-    var retTemplate = [
-      "function() {",
-        "return ", template, ";",
-      "}"
-    ].join("");
-
     return [
       "define('", pluginName, "!", moduleName, "', ", "[], ",
-        retTemplate,
+        [
+          "function() {",
+            "return ", template, ";",
+          "}"
+        ].join(""),
       ");\n"
     ].join("");
   }
