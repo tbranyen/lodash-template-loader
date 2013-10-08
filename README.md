@@ -5,8 +5,9 @@ Lo-Dash AMD Template Loader
 
 Created by Tim Branyen [@tbranyen](http://twitter.com/tbranyen)
 
-AMD and RequireJS are excellent module loaders, but through the flexibility of
-plugin architecture they should really be seen as resource loaders.
+RequireJS, Dojo, and Curl are excellent module loaders, but through the
+flexibility of plugin architecture they should really be seen as resource
+loaders.
 
 We've come to expect our development environments to be raw and our builds to
 be as optimized as possible.  This plugin will fetch your Lo-Dash templates
