@@ -190,6 +190,10 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.2 ####
+
+* Resolved issue with baseUrl concatenation to moduleName.
+
 #### 0.1.1 ####
 
 * Hotfix for building in r.js projects.
