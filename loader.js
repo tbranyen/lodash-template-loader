@@ -30,12 +30,6 @@ define(function(require, exports) {
       config = require.rawConfig;
     }
 
-    // Always keep a copy of the original name.
-    var originalName = name;
-
-    // Augment the name with the baseUrl.
-    name = config.baseUrl + name;
-
     var settings = configure(config);
 
     // Builds must happen with Node.
@@ -44,7 +38,7 @@ define(function(require, exports) {
 
       // Read in the file synchronously, as RequireJS expects, and return the
       // contents.  Process as a Lo-Dash template.
-      buildMap[originalName] = _.template(String(fs.readFileSync(name)));
+      buildMap[name] = _.template(String(fs.readFileSync(name)));
 
       return load();
     }

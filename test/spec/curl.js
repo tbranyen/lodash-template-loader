@@ -17,7 +17,6 @@ curl.config({
 });
 
 asyncTest("AMD support", 1, function() {
-
   curl(["ldsh!fixtures/template"]).then(
     function(template) {
       ok(template(), "It works!");
