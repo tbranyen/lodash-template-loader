@@ -14,6 +14,7 @@ var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 // If in Node, get access to the filesystem.
 if (nodeRequire) {
   var fs = nodeRequire("fs");
+  var path = nodeRequire("path");
 }
 
 // Define the plugin using the CommonJS syntax.
@@ -34,11 +35,14 @@ define(function(require, exports) {
 
     // Builds must happen with Node.
     if (config.isBuild) {
-      name = settings.root + name + settings.ext;
+      var filepath = settings.root + name + settings.ext;
+
+      // Make the filepath absolute if it isn't already.
+      filepath = path.resolve(".", filepath);
 
       // Read in the file synchronously, as RequireJS expects, and return the
       // contents.  Process as a Lo-Dash template.
-      buildMap[name] = _.template(String(fs.readFileSync(name)));
+      buildMap[name] = _.template(String(fs.readFileSync(filepath)));
 
       return load();
     }
