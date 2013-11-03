@@ -5,16 +5,17 @@
  */
 QUnit.module("dojo");
 
-asyncTest("AMD support", 1, function() {
-  require({
-    baseUrl: "../",
+require({
+  baseUrl: "/test",
 
-    paths: {
-      lodash: "bower_components/lodash/dist/lodash",
-      ldsh: "loader",
-      fixtures: "test/fixtures"
-    }
-  }, ["ldsh!fixtures/template"], function(template) {
+  paths: {
+    lodash: "../bower_components/lodash/dist/lodash",
+    ldsh: "../loader"
+  }
+});
+
+asyncTest("AMD support", 1, function() {
+  require(["ldsh!fixtures/template"], function(template) {
     ok(template(), "It works!");
 
     start();
@@ -48,7 +49,7 @@ asyncTest("templateSettings", function() {
 });
 
 asyncTest("relative paths", 1, function() {
-  require(["fixtures/nested/module"], function(exports) {
+  require(["./fixtures/nested/module.js"], function(exports) {
     ok(exports.template(), "It works!");
 
     start();

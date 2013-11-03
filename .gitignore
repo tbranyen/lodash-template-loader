@@ -1,3 +1,4 @@
 /test/reports/
+/test/build_tools/_output/
 /bower_components/
 /node_modules/

@@ -32,13 +32,28 @@ define(function(require, exports) {
 
     var settings = configure(config);
 
-    // Builds must happen with Node.
+    // Builds with r.js require Node.js to be installed.
     if (config.isBuild) {
       var path = settings.root + name + settings.ext;
+      var contents = "";
+
+      try {
+        // First try reading the filepath as-is.
+        contents = String(fs.readFileSync(path));
+      } catch(ex) {
+        // If it failed, it's most likely because of a leading `/` and not an
+        // absolute path.  Remove the leading slash and try again.
+        if (path[0] === "/") {
+          path = path.slice(1);
+        }
+
+        // Try reading again with the leading `/`.
+        contents = String(fs.readFileSync(path));
+      }
 
       // Read in the file synchronously, as RequireJS expects, and return the
       // contents.  Process as a Lo-Dash template.
-      buildMap[name] = _.template(String(fs.readFileSync(path)));
+      buildMap[name] = _.template(contents);
 
       return load();
     }
@@ -58,7 +73,7 @@ define(function(require, exports) {
     };
 
     // Initiate the fetch.
-    xhr.open("GET", "/" + settings.root + name + settings.ext, true);
+    xhr.open("GET", settings.root + name + settings.ext, true);
     xhr.send(null);
   };
 
@@ -105,6 +120,11 @@ define(function(require, exports) {
       root: config.baseUrl,
       templateSettings: {}
     }, config.lodashLoader);
+
+    // Ensure the root has been properly configured with a trailing slash.
+    if (settings.root[settings.root.length-1] !== "/") {
+      settings.root += "/";
+    }
 
     // Set the custom passed in template settings.
     _.extend(_.templateSettings, settings.templateSettings);

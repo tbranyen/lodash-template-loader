@@ -7,12 +7,11 @@
 QUnit.module("curl");
 
 curl.config({
-  baseUrl: "../",
+  baseUrl: "/test",
 
   paths: {
-    "lodash": "bower_components/lodash/dist/lodash",
-    "ldsh": "loader",
-    "fixtures": "test/fixtures"
+    "lodash": "../bower_components/lodash/dist/lodash",
+    "ldsh": "../loader"
   }
 });
 
