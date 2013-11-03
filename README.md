@@ -190,6 +190,11 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.3 ####
+
+* Added RequireJS optimizer testing.
+* Fixed bug with absolute URL fetching (double /).
+
 #### 0.1.2 ####
 
 * Resolved issue with baseUrl concatenation to moduleName.
