@@ -121,8 +121,10 @@ define(function(require, exports) {
       templateSettings: {}
     }, config.lodashLoader);
 
-    // Ensure the root has been properly configured with a trailing slash.
-    if (settings.root[settings.root.length-1] !== "/") {
+    // Ensure the root has been properly configured with a trailing slash,
+    // unless it's an empty string or undefined, in which case work off the
+    // baseUrl.
+    if (settings.root && settings.root[settings.root.length-1] !== "/") {
       settings.root += "/";
     }
 
