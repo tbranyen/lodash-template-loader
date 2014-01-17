@@ -190,6 +190,11 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.4 ####
+
+* Less restrictive handling of Lo-Dash version within Bower dependencies.
+* Fixes edge case where an undefined baseUrl root would get a leading slash.
+
 #### 0.1.3 ####
 
 * Added RequireJS optimizer testing.

@@ -1,9 +1,9 @@
 {
   "name": "lodash-template-loader",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "loader.js",
   "dependencies": {
-    "lodash": "~2.2.0"
+    "lodash": "*"
   },
   "devDependencies": {
     "qunit": "~1.12.0",
