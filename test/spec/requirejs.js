@@ -67,3 +67,15 @@ asyncTest("plugin works with r.js optimizer", 1, function() {
     });
   });
 });
+
+asyncTest("virtual paths defined via paths config", 1, function() {
+  require({
+    paths: {
+      "nested": "fixtures/nested"
+    }
+  }, ["ldsh!nested/template"], function(template) {
+    ok(template(), "It works!");
+
+    start();
+  });
+});

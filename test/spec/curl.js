@@ -74,3 +74,15 @@ asyncTest("relative paths", 1, function() {
     start();
   });
 });
+
+asyncTest("virtual paths defined via paths config", 1, function() {
+  curl({
+    paths: {
+      "nested": "fixtures/nested"
+    }
+  }, ["ldsh!nested/template"], function(template) {
+    ok(template(), "It works!");
+
+    start();
+  });
+});
