@@ -30,7 +30,12 @@ define(function(require, exports) {
       config = require.rawConfig;
     }
 
+    console.log(name);
+
     var settings = configure(config);
+    var url = require.toUrl(name + settings.ext);
+
+    console.dir(url);
 
     // Builds with r.js require Node.js to be installed.
     if (config.isBuild) {
@@ -73,7 +78,7 @@ define(function(require, exports) {
     };
 
     // Initiate the fetch.
-    xhr.open("GET", settings.root + name + settings.ext, true);
+    xhr.open("GET", url, true);
     xhr.send(null);
   };
 
