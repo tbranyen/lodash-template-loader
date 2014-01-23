@@ -1,4 +1,4 @@
-/* Lo-Dash Template Loader v0.1.4
+/* Lo-Dash Template Loader v0.1.5
  * Copyright 2013, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
@@ -15,7 +15,7 @@ var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 define(function(require, exports) {
   var _ = require("lodash");
 
-  exports.version = "0.1.4";
+  exports.version = "0.1.5";
 
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.

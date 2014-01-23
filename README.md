@@ -190,6 +190,11 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.5 ####
+
+* Tests are now accurate.
+* Fixed relative loading and conformance between Dojo, Curl, and RequireJS.
+
 #### 0.1.4 ####
 
 * Less restrictive handling of Lo-Dash version within Bower dependencies.
