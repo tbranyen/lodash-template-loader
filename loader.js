@@ -11,11 +11,6 @@ var buildMap = {};
 // Alias the correct `nodeRequire` method.
 var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 
-// If in Node, get access to the filesystem.
-if (nodeRequire) {
-  var fs = nodeRequire("fs");
-}
-
 // Define the plugin using the CommonJS syntax.
 define(function(require, exports) {
   var _ = require("lodash");
@@ -25,30 +20,36 @@ define(function(require, exports) {
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.
   exports.load = function(name, req, load, config) {
+    var isDojo;
+
     // Dojo provides access to the config object through the req function.
     if (!config) {
       config = require.rawConfig;
+      isDojo = true;
     }
 
+    var contents = "";
     var settings = configure(config);
+    var prefix = isDojo ? "/" : "";
+    var url = require.toUrl(prefix  + name + settings.ext);
 
     // Builds with r.js require Node.js to be installed.
     if (config.isBuild) {
-      var path = settings.root + name + settings.ext;
-      var contents = "";
+      // If in Node, get access to the filesystem.
+      var fs = nodeRequire("fs");
 
       try {
         // First try reading the filepath as-is.
-        contents = String(fs.readFileSync(path));
+        contents = String(fs.readFileSync(url));
       } catch(ex) {
         // If it failed, it's most likely because of a leading `/` and not an
         // absolute path.  Remove the leading slash and try again.
-        if (path[0] === "/") {
-          path = path.slice(1);
+        if (url[0] === "/") {
+          url = url.slice(1);
         }
 
         // Try reading again with the leading `/`.
-        contents = String(fs.readFileSync(path));
+        contents = String(fs.readFileSync(url));
       }
 
       // Read in the file synchronously, as RequireJS expects, and return the
@@ -73,7 +74,7 @@ define(function(require, exports) {
     };
 
     // Initiate the fetch.
-    xhr.open("GET", settings.root + name + settings.ext, true);
+    xhr.open("GET", url, true);
     xhr.send(null);
   };
 

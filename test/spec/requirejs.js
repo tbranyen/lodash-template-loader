@@ -5,18 +5,18 @@
  */
 QUnit.module("requirejs");
 
+require.config({
+  baseUrl: "/test",
+
+  paths: {
+    lodash: "../bower_components/lodash/dist/lodash",
+    ldsh: "../loader"
+  }
+});
+
 asyncTest("AMD support", 1, function() {
-  require.config({
-    baseUrl: "/test",
-
-    paths: {
-      lodash: "../bower_components/lodash/dist/lodash",
-      ldsh: "../loader"
-    }
-  });
-
   require(["ldsh!fixtures/template"], function(template) {
-    ok(template(), "It works!");
+    equal(template().trim(), "It works!");
 
     start();
   });
@@ -28,7 +28,7 @@ asyncTest("change extension", 1, function() {
       ext: ".ext"
     }
   }, ["ldsh!fixtures/different"], function(template) {
-    ok(template(), "It works!");
+    equal(template().trim(), "It works!");
 
     start();
   });
@@ -42,7 +42,7 @@ asyncTest("templateSettings", 1, function() {
       }
     }
   }, ["ldsh!fixtures/interpolate"], function(template) {
-    ok(template({ msg: "It works!" }), "It works!");
+    equal(template({ msg: "It works!" }).trim(), "It works!");
 
     start();
   });
@@ -50,7 +50,7 @@ asyncTest("templateSettings", 1, function() {
 
 asyncTest("relative paths", 1, function() {
   require(["fixtures/nested/module"], function(exports) {
-    ok(exports.template(), "It works!");
+    equal(exports.template().trim(), "It works!");
 
     start();
   });
@@ -61,7 +61,7 @@ asyncTest("plugin works with r.js optimizer", 1, function() {
   require(["build_tools/_output/r"], function() {
     // Request the template.
     require(["ldsh!fixtures/basic"], function(template) {
-      ok(template(), "It works!");
+      equal(template().trim(), "It works!");
 
       start();
     });
@@ -74,7 +74,7 @@ asyncTest("virtual paths defined via paths config", 1, function() {
       "nested": "fixtures/nested"
     }
   }, ["ldsh!nested/template"], function(template) {
-    ok(template(), "It works!");
+    equal(template().trim(), "It works!");
 
     start();
   });
