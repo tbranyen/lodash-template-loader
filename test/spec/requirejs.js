@@ -79,15 +79,3 @@ asyncTest("virtual paths defined via paths config", 1, function() {
     start();
   });
 });
-
-asyncTest("relative paths work as expected", 1, function() {
-  require({
-    paths: {
-      "nestedModule": "fixtures/nested/module"
-    }
-  }, ["nestedModule"], function(nestedModule) {
-    equal(nestedModule.template().trim(), "It works!");
-
-    start();
-  });
-});

@@ -11,14 +11,15 @@ curl.config({
 
   paths: {
     "lodash": "../bower_components/lodash/dist/lodash",
-    "ldsh": "../loader"
+    "ldsh": "../loader",
+    "nested": "fixtures/nested"
   }
 });
 
 asyncTest("AMD support", 1, function() {
   curl(["ldsh!fixtures/template"]).then(
     function(template) {
-      ok(template(), "It works!");
+      equal(template().trim(), "It works!");
 
       start();
     },
@@ -36,7 +37,7 @@ asyncTest("change extension", function() {
     }
   }, ["ldsh!fixtures/different"]).then(
     function(template) {
-      ok(template(), "It works!");
+      equal(template().trim(), "It works!");
 
       start();
     },
@@ -56,7 +57,7 @@ asyncTest("templateSettings", function() {
     }
   }, ["ldsh!fixtures/interpolate"]).then(
     function(template) {
-      ok(template({ msg: "It works!" }), "It works!");
+      equal(template({ msg: "It works!" }).trim(), "It works!");
 
       start();
     },
@@ -69,19 +70,15 @@ asyncTest("templateSettings", function() {
 
 asyncTest("relative paths", 1, function() {
   curl(["fixtures/nested/module"], function(exports) {
-    ok(exports.template(), "It works!");
+    equal(exports.template().trim(), "It works!");
 
     start();
   });
 });
 
 asyncTest("virtual paths defined via paths config", 1, function() {
-  curl({
-    paths: {
-      "nested": "fixtures/nested"
-    }
-  }, ["ldsh!nested/template"], function(template) {
-    ok(template(), "It works!");
+  curl(["ldsh!nested/template"], function(template) {
+    equal(template().trim(), "It works!");
 
     start();
   });
