@@ -30,7 +30,7 @@ define(function(require, exports) {
 
     var contents = "";
     var settings = configure(config);
-    var prefix = isDojo ? "/" : "";
+    var prefix = isDojo ? "/" : settings.root;
     var url = require.toUrl(prefix  + name + settings.ext);
 
     // Builds with r.js require Node.js to be installed.
