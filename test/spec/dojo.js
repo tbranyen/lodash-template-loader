@@ -62,7 +62,7 @@ asyncTest("virtual paths defined via paths config", 1, function() {
       "nested": "fixtures/nested"
     }
   }, ["ldsh!nested/template"], function(template) {
-    ok(template(), "It works!");
+    ok(template(), "It works! (nested)");
 
     start();
   });

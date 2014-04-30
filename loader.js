@@ -30,8 +30,14 @@ define(function(require, exports) {
 
     var contents = "";
     var settings = configure(config);
-    var prefix = isDojo ? "/" : settings.root;
-    var url = require.toUrl(prefix  + name + settings.ext);
+      
+    // Only use root if baseUrl and root differ: toUrl() will choke on 
+    // virtual path config
+    var root = settings.root.replace(/(\/$)/,'') !== 
+               config.baseUrl.replace(/(\/$)/,'') ? settings.root:'';
+    
+    var prefix = isDojo ? "/" : root;
+    var url = require.toUrl(prefix + name + settings.ext);
 
     // Builds with r.js require Node.js to be installed.
     if (config.isBuild) {
