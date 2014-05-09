@@ -50,7 +50,7 @@ asyncTest("templateSettings", 1, function() {
 
 asyncTest("relative paths", 1, function() {
   require(["fixtures/nested/module"], function(exports) {
-    equal(exports.template().trim(), "It works!");
+    equal(exports.template().trim(), "It works! (nested)");
 
     start();
   });
@@ -74,8 +74,36 @@ asyncTest("virtual paths defined via paths config", 1, function() {
       "nested": "fixtures/nested"
     }
   }, ["ldsh!nested/template"], function(template) {
-    equal(template().trim(), "It works!");
+    equal(template().trim(), "It works! (nested)");
 
     start();
   });
+});
+
+
+asyncTest("root path setting", 1, function() {
+    require({
+        lodashLoader: {
+            root: "fixtures"
+        }
+    }, ["ldsh!template"], function(template) {
+        equal(template().trim(), "It works!");
+
+        start();
+    });
+});
+
+asyncTest("nested path with root path setting", 1, function() {
+    require({
+        lodashLoader: {
+            root: "fixtures"
+        },
+        paths: {
+            "nested": "fixtures/nested"
+        }
+    }, ["ldsh!nested/template"], function(template) {
+        equal(template().trim(), "It works! (nested)");
+
+        start();
+    });
 });

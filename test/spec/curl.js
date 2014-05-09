@@ -70,7 +70,7 @@ asyncTest("templateSettings", function() {
 
 asyncTest("relative paths", 1, function() {
   curl(["fixtures/nested/module"], function(exports) {
-    equal(exports.template().trim(), "It works!");
+    equal(exports.template().trim(), "It works! (nested)");
 
     start();
   });
@@ -78,7 +78,7 @@ asyncTest("relative paths", 1, function() {
 
 asyncTest("virtual paths defined via paths config", 1, function() {
   curl(["ldsh!nested/template"], function(template) {
-    equal(template().trim(), "It works!");
+    equal(template().trim(), "It works! (nested)");
 
     start();
   });
