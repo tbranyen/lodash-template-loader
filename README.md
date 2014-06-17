@@ -190,6 +190,10 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.6 ####
+
+* Ensure `root` option works as expected.
+
 #### 0.1.5 ####
 
 * Tests are now accurate.
