@@ -110,9 +110,9 @@ define(function(require, exports) {
   // Crafts the written definition form of the module during a build.
   function strDefine(pluginName, moduleName, template) {
     return [
-      "define('", pluginName, "!", moduleName, "', ", "[], ",
+      "define('", pluginName, "!", moduleName, "', ", "['lodash'], ",
         [
-          "function() {",
+          "function(_) {",
             "return ", template, ";",
           "}"
         ].join(""),
