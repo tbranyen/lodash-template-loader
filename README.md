@@ -24,10 +24,16 @@ duplicative act of compiling the templates before use in production.
 
 ### Installing: ###
 
-This plugin has been registered with Bower, install with:
+Bower:
 
 ``` bash
 bower install lodash-template-loader
+```
+
+NPM:
+
+``` bash
+npm install lodash-template-loader
 ```
 
 Alternatively you can download the `loader.js` file and place anywhere in your
@@ -179,7 +185,7 @@ commands:
 
 ``` bash
 # Install dependencies.
-npm i -q
+npm install
 
 # Run the tests.
 grunt
@@ -189,6 +195,11 @@ You can also run an http-server in the root and hit the tests directly.  Since
 XHR is used, tests must be run from a server.
 
 ### Release notes: ###
+
+#### 0.1.7 ####
+
+* Removes Bower from install process in NPM.
+* Makes Lo-Dash available in the render context.
 
 #### 0.1.6 ####
 

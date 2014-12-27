@@ -1,5 +1,5 @@
-/* Lo-Dash Template Loader v0.1.6
- * Copyright 2013, Tim Branyen (@tbranyen).
+/* Lo-Dash Template Loader v0.1.7
+ * Copyright 2014, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
 (function(global) {
@@ -15,7 +15,7 @@ var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 define(function(require, exports) {
   var _ = require("lodash");
 
-  exports.version = "0.1.6";
+  exports.version = "0.1.7";
 
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.
@@ -30,12 +30,12 @@ define(function(require, exports) {
 
     var contents = "";
     var settings = configure(config);
-      
-    // Only use root if baseUrl and root differ: toUrl() will choke on 
+
+    // Only use root if baseUrl and root differ: toUrl() will choke on
     // virtual path config
-    var root = settings.root.replace(/(\/$)/,'') !== 
+    var root = settings.root.replace(/(\/$)/,'') !==
                config.baseUrl.replace(/(\/$)/,'') ? settings.root:'';
-    
+
     var prefix = isDojo ? "/" : root;
     var url = require.toUrl(prefix + name + settings.ext);
 
