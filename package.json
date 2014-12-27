@@ -17,7 +17,6 @@
     "grunt-contrib-requirejs": "~0.4.4"
   },
   "scripts": {
-    "test": "grunt",
-    "postinstall": "bower i -s"
+    "test": "grunt"
   }
 }
