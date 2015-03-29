@@ -1,4 +1,4 @@
-/* 
+/*
  * Test Module: Curl
  * Ensures that the loader loads and functions in Curl.
  *
@@ -10,7 +10,7 @@ curl.config({
   baseUrl: "/test",
 
   paths: {
-    "lodash": "../bower_components/lodash/dist/lodash",
+    "lodash": "../bower_components/lodash/lodash",
     "ldsh": "../loader",
     "nested": "fixtures/nested"
   }

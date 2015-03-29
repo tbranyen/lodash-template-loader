@@ -11,5 +11,5 @@ module.exports = ->
         exclude: ["lodash", "ldsh"]
 
         paths:
-          lodash: "../../bower_components/lodash/dist/lodash"
+          lodash: "../../bower_components/lodash/lodash"
           ldsh: "../../loader"

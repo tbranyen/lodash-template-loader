@@ -1,4 +1,4 @@
-/* 
+/*
  * Test Module: RequireJS
  * Ensures that the loader loads and functions in RequireJS.
  *
@@ -9,7 +9,7 @@ require.config({
   baseUrl: "/test",
 
   paths: {
-    lodash: "../bower_components/lodash/dist/lodash",
+    lodash: "../bower_components/lodash/lodash",
     ldsh: "../loader"
   }
 });

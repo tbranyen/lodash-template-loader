@@ -1,4 +1,4 @@
-/* 
+/*
  * Test Module: Dojo
  * Ensures that the loader loads and functions in Dojo.
  *
@@ -9,7 +9,7 @@ require({
   baseUrl: "/test",
 
   paths: {
-    lodash: "../bower_components/lodash/dist/lodash",
+    lodash: "../bower_components/lodash/lodash",
     ldsh: "../loader"
   }
 });
