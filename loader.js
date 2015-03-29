@@ -50,7 +50,7 @@ define(function(require, exports) {
       } catch(ex) {
         // If it failed, it's most likely because of a leading `/` and not an
         // absolute path.  Remove the leading slash and try again.
-        if (url[0] === "/") {
+        if (url.slice(0, 1) === "/") {
           url = url.slice(1);
         }
 
@@ -131,7 +131,7 @@ define(function(require, exports) {
     // Ensure the root has been properly configured with a trailing slash,
     // unless it's an empty string or undefined, in which case work off the
     // baseUrl.
-    if (settings.root && settings.root[settings.root.length-1] !== "/") {
+    if (settings.root && settings.root.slice(-1) !== "/") {
       settings.root += "/";
     }
 
