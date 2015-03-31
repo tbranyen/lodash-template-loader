@@ -196,6 +196,11 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.8 ####
+
+* Old IE support
+* SourceURL automatically attached
+
 #### 0.1.7 ####
 
 * Removes Bower from install process in NPM.
