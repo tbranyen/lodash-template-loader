@@ -3,7 +3,7 @@
   "version": "0.1.8",
   "main": "loader.js",
   "dependencies": {
-    "lodash": "*"
+    "lodash": "~3"
   },
   "devDependencies": {
     "qunit": "~1.12.0",
