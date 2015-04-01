@@ -1,4 +1,4 @@
-/* Lo-Dash Template Loader v0.1.7
+/* Lo-Dash Template Loader v1.0.0
  * Copyright 2015, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
