@@ -196,6 +196,10 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 0.1.9 ####
+
+* Revert breaking change in `_.template` to reduce confusion
+
 #### 0.1.8 ####
 
 * Old IE support

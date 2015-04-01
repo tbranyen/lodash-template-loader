@@ -1,6 +1,6 @@
 {
   "name": "lodash-template-loader",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A Lo-Dash template loader plugin for AMD projects.",
   "main": "loader.js",
   "author": "Tim Branyen (@tbranyen)",

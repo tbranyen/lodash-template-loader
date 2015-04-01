@@ -15,7 +15,7 @@ var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 define(function(require, exports) {
   var _ = require("lodash");
 
-  exports.version = "0.1.8";
+  exports.version = "0.1.9";
 
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.
