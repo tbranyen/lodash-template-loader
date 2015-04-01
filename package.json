@@ -5,7 +5,7 @@
   "main": "loader.js",
   "author": "Tim Branyen (@tbranyen)",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "lodash": "~3"
   },
   "devDependencies": {
