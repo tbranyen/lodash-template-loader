@@ -196,6 +196,11 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 1.0.0 ####
+
+* Reintroduced: SourceURL automatically attached
+* Locked lodash to ~3 to avoid backwards breaking API
+
 #### 0.1.9 ####
 
 * Revert breaking change in `_.template` to reduce confusion

@@ -1,6 +1,6 @@
 {
   "name": "lodash-template-loader",
-  "version": "0.1.9",
+  "version": "1.0.0",
   "main": "loader.js",
   "dependencies": {
     "lodash": "~3"
