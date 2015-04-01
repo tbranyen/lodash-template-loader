@@ -1,5 +1,5 @@
 /* Lo-Dash Template Loader v0.1.7
- * Copyright 2015, Tim Branyen (@tbranyen).
+ * Copyright 2014, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
 (function(global) {
@@ -71,13 +71,8 @@ define(function(require, exports) {
     // Wait for it to load.
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
-        var templateSettings = _.clone(settings.templateSettings);
-
-        // Attach the sourceURL.
-        templateSettings.sourceURL = url;
-
         // Process as a Lo-Dash template and cache.
-        buildMap[name] = _.template(xhr.responseText, templateSettings);
+        buildMap[name] = _.template(xhr.responseText);
 
         // Return the compiled template.
         load(buildMap[name]);
