@@ -5,6 +5,9 @@
   "main": "loader.js",
   "author": "Tim Branyen (@tbranyen)",
   "license": "MIT",
+  "dependencies": {
+    "lodash": "~3"
+  },
   "devDependencies": {
     "grunt-contrib-clean": "^0.6.0",
     "grunt": "^0.4.5",
