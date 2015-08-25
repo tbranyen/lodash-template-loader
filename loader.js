@@ -31,13 +31,20 @@ define(function(require, exports) {
     var contents = "";
     var settings = configure(config);
 
-    // Only use root if baseUrl and root differ: toUrl() will choke on
-    // virtual path config
-    var root = settings.root.replace(/(\/$)/,'') !==
-               config.baseUrl.replace(/(\/$)/,'') ? settings.root:'';
+    var stripTrailing = function(prop) {
+      return prop.replace(/(\/$)/, '');
+    };
 
-    var prefix = isDojo ? "/" : root;
-    var url = require.toUrl(prefix + name + settings.ext);
+    // If the baseUrl and root are the same, just null out the root.
+    if (stripTrailing(config.baseUrl) === stripTrailing(settings.root)) {
+      settings.root = '';
+    }
+
+    var url = require.toUrl(settings.root + name + settings.ext);
+
+    if (isDojo && url.indexOf(config.baseUrl) !== 0) {
+      url = stripTrailing(config.baseUrl) + url;
+    }
 
     // Builds with r.js require Node.js to be installed.
     if (config.isBuild) {

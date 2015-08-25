@@ -16,7 +16,7 @@ require({
 
 asyncTest("AMD support", 1, function() {
   require(["ldsh!fixtures/template"], function(template) {
-    ok(template(), "It works!");
+    equal(template().trim(), "It works!");
 
     start();
   });
@@ -28,7 +28,7 @@ asyncTest("change extension", function() {
       ext: ".ext"
     }
   }, ["ldsh!fixtures/different"], function(template) {
-    ok(template(), "It works!");
+    equal(template().trim(), "It works!");
 
     start();
   });
@@ -42,7 +42,7 @@ asyncTest("templateSettings", function() {
       }
     }
   }, ["ldsh!fixtures/interpolate"], function(template) {
-    ok(template({ msg: "It works!" }), "It works!");
+    equal(template({ msg: "It works!" }).trim(), "It works!");
 
     start();
   });
@@ -50,7 +50,7 @@ asyncTest("templateSettings", function() {
 
 asyncTest("relative paths", 1, function() {
   require(["./fixtures/nested/module.js"], function(exports) {
-    ok(exports.template(), "It works!");
+    equal(exports.template().trim(), "It works! (nested)");
 
     start();
   });
@@ -62,7 +62,7 @@ asyncTest("virtual paths defined via paths config", 1, function() {
       "nested": "fixtures/nested"
     }
   }, ["ldsh!nested/template"], function(template) {
-    ok(template(), "It works! (nested)");
+    equal(template().trim(), "It works! (nested)");
 
     start();
   });
