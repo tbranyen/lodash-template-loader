@@ -3,4 +3,4 @@ module.exports = ->
 
   @config "watch",
     files: ["loader.js", "test/**/*", "Gruntfile.coffee"]
-    tasks: ["clear", "default"]
+    tasks: ["default"]
