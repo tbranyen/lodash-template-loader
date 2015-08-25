@@ -1,4 +1,4 @@
-/* Lo-Dash Template Loader v1.0.0
+/* Lo-Dash Template Loader v1.0.1
  * Copyright 2015, Tim Branyen (@tbranyen).
  * loader.js may be freely distributed under the MIT license.
  */
@@ -20,7 +20,7 @@ var stripTrailing = function(prop) {
 define(function(require, exports) {
   var _ = require("lodash");
 
-  exports.version = "1.0.0";
+  exports.version = "1.0.1";
 
   // Invoked by the AMD builder, passed the path to resolve, the require
   // function, done callback, and the configuration options.

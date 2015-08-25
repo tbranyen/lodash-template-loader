@@ -196,6 +196,10 @@ XHR is used, tests must be run from a server.
 
 ### Release notes: ###
 
+#### 1.0.1 ####
+
+* Fixes Dojo support and unit tests
+
 #### 1.0.0 ####
 
 * Reintroduced: SourceURL automatically attached
