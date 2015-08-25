@@ -11,6 +11,11 @@ var buildMap = {};
 // Alias the correct `nodeRequire` method.
 var nodeRequire = typeof requirejs === "function" && requirejs.nodeRequire;
 
+// Strips trailing `/` from url fragments.
+var stripTrailing = function(prop) {
+  return prop.replace(/(\/$)/, '');
+};
+
 // Define the plugin using the CommonJS syntax.
 define(function(require, exports) {
   var _ = require("lodash");
@@ -30,10 +35,6 @@ define(function(require, exports) {
 
     var contents = "";
     var settings = configure(config);
-
-    var stripTrailing = function(prop) {
-      return prop.replace(/(\/$)/, '');
-    };
 
     // If the baseUrl and root are the same, just null out the root.
     if (stripTrailing(config.baseUrl) === stripTrailing(settings.root)) {
